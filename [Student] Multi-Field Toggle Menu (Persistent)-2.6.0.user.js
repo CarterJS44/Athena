@@ -6,6 +6,7 @@
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
 // @grant        none
+// @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BStudent%5D%20Multi-Field%20Toggle%20Menu%20(Persistent)-2.6.0.user.js
 // ==/UserScript==
 
 (function () {
