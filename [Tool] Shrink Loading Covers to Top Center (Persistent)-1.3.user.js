@@ -6,6 +6,7 @@
 // @match        *://*.etstack.io/*
 // @author       Joey my beloved
 // @grant        GM_addStyle
+// @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BTool%5D%20Shrink%20Loading%20Covers%20to%20Top%20Center%20(Persistent)-1.3.user.js
 // ==/UserScript==
 
 (function() {
