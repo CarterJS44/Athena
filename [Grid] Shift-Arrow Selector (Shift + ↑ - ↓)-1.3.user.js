@@ -6,6 +6,7 @@
 // @match        *://*.etstack.io/*
 // @run-at       document-idle
 // @grant        none
+// @author       Carter Schuller 
 // @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BGrid%5D%20Shift-Arrow%20Selector%20(Shift%20%2B%20%E2%86%91%20-%20%E2%86%93)-1.3.user.js
 // ==/UserScript==
 
