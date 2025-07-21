@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         [Bell Time] Fullscreen Bell-Time Panel (Persistent)
 // @namespace    https://etstack.io/
-// @version      1.6
+// @version      1.7
 // @description  Keep Bell-Time widget fullscreen on etstack.io – even if the panel has no header.
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
