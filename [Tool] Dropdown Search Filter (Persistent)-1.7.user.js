@@ -6,6 +6,7 @@
 // @match        *://*.etstack.io/*
 // @author       Carter and Joey
 // @grant        none
+// @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BTool%5D%20Dropdown%20Search%20Filter%20(Persistent)-1.7.user.js
 // ==/UserScript==
 
 (function () {
