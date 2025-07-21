@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         [Grid] Single Selector (button)
 // @namespace    https://etstack.io/
-// @version      0.3.1
+// @version      0.3.2
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
 // @grant        none
@@ -15,11 +15,15 @@
 (() => {
   'use strict';
 
-  /*  user pref  */
-  const BTN_ID = 'tm-one-select-btn';
-  let active = JSON.parse(localStorage.getItem('tmOneSelectActive') ?? 'false');
+  const BTN_ID     = 'tm-one-select-btn';
+  const LS_ACTIVE  = 'tmOneSelectActive';
+  const LS_DEBUG   = 'tmOneSelectDebug';
 
-  /*  quick style & toggle button (unchanged) */
+  let active = JSON.parse(localStorage.getItem(LS_ACTIVE) ?? 'false');
+  let DEBUG  = JSON.parse(localStorage.getItem(LS_DEBUG)  ?? 'false');
+  const log = (...a) => { if (DEBUG) console.log('[one-select]', ...a); };
+
+  /* toggle button */
   if (!document.getElementById('tm-one-select-style')) {
     const s = document.createElement('style'); s.id = 'tm-one-select-style';
     s.textContent = `
@@ -29,8 +33,8 @@
     document.head.appendChild(s);
   }
   const refreshBtn = btn => {
-    btn.className = `btn btn-tiny ${active?'on':'off'} ml-1`;
-    btn.textContent = `Single‑select ${active?'ON':'OFF'}`;
+    btn.className  = `btn btn-tiny ${active?'on':'off'} ml-1`;
+    btn.textContent = `Single-select ${active?'ON':'OFF'}`;
   };
   const injectBtn = () => {
     const host = document.querySelector('.text-right.pb-1');
@@ -41,8 +45,9 @@
       btn.id = BTN_ID;
       btn.onclick = () => {
         active = !active;
-        localStorage.setItem('tmOneSelectActive', JSON.stringify(active));
+        localStorage.setItem(LS_ACTIVE, JSON.stringify(active));
         refreshBtn(btn);
+        log('active ->', active);
       };
       host.insertBefore(btn, host.querySelector('column-picker-v2') || null);
     }
@@ -50,34 +55,59 @@
   };
   setInterval(injectBtn, 1000); injectBtn();
 
-  /* helper: visible “Remove” button */
-  const clickRemoveBtn = () => {
-    const btn = [...document.querySelectorAll('button.btn-secondary-action:not([disabled])')]
-      .find(b => /(^|\s)remove(\s|$)/i.test(b.textContent) && b.offsetParent);
-    if (btn) btn.click();
+  /* clear helper – looks for enabled Remove/Delete/Clear */
+  const clickRemoveBtn = (scope=document) => {
+    const btn = [...scope.querySelectorAll('button.btn-secondary-action:not([disabled])')]
+      .find(b => /\b(remove|delete|clear)\b/i.test(b.textContent) && b.offsetParent);
+    if (btn) { log('click toolbar clear:', btn.textContent.trim()); btn.click(); }
   };
 
-  /* pointer interceptor – fires before AG‑Grid */
+  /* console helpers */
+  function refreshBtnUI(){ const b=document.getElementById(BTN_ID); if(b) refreshBtn(b); }
+  window.tmOneSelect = {
+    on(){  active=true;  localStorage.setItem(LS_ACTIVE,'true');  refreshBtnUI(); log('forced ON'); },
+    off(){ active=false; localStorage.setItem(LS_ACTIVE,'false'); refreshBtnUI(); log('forced OFF'); },
+    debug(v=true){ DEBUG=!!v; localStorage.setItem(LS_DEBUG,JSON.stringify(DEBUG)); log('debug ->',DEBUG); },
+    sels(grid=document.querySelector('.ag-root-wrapper')){
+      if(!grid) return [];
+      const ids=[...grid.querySelectorAll('.ag-center-cols-container .ag-row-selected[row-id]')]
+        .map(r=>r.getAttribute('row-id'));
+      console.log('selected rows:',ids);
+      return ids;
+    }
+  };
+
+  /* main interception */
   document.addEventListener('pointerdown', e => {
     if (!active) return;
 
-    // only rows inside the *centre* container
+    // only rows inside center cols
     const row = e.target.closest('.ag-center-cols-container [row-id]');
     if (!row) return;
 
-    const id = row.getAttribute('row-id') || '';
-    if (!/^r\d+$/.test(id)) return;          // ← skip group / special rows
+    // find containing grid root
+    const gridRoot = row.closest('.ag-root-wrapper');
+    if (!gridRoot) return;
 
-    // how many *unique* student IDs are currently selected?
-    const selectedIds = [...document.querySelectorAll('.ag-center-cols-container .ag-row-selected')]
-                          .map(r => r.getAttribute('row-id'))
-                          .filter(rid => /^r\d+$/.test(rid));       // keep only real rows
+    // *** bail out for grids that don't have selection checkbox column ***
+    if (!gridRoot.querySelector('[col-id="checkbox"]')) {
+      log('skip grid (no checkbox col)');
+      return;
+    }
+
+    const id = row.getAttribute('row-id') || '';
+    if (!/^r\d+$/i.test(id)) return;  // ignore group/agg/etc
+
+    // current selection *within this grid only*
+    const selectedIds = [...gridRoot.querySelectorAll('.ag-center-cols-container .ag-row-selected[row-id]')]
+      .map(r => r.getAttribute('row-id'))
+      .filter(rid => /^r\d+$/i.test(rid));
     const unique = [...new Set(selectedIds)];
 
-    // if already the sole selection – do nothing
-    if (unique.length === 1 && unique[0] === id) return;
+    log('click row', id, 'existing', unique);
 
-    // otherwise clear current selection first
-    if (unique.length) clickRemoveBtn();     // AG‑Grid will now accept the click
+    if (unique.length === 1 && unique[0] === id) return; // already sole
+
+    if (unique.length) clickRemoveBtn(gridRoot.ownerDocument); // clear, then AG grid handles new select
   }, true); // capture
 })();
