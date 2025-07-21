@@ -7,6 +7,7 @@
 // @run-at       document-idle
 // @author       Carter Schuller
 // @grant        none
+// @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BStudents%5D%20Card%20Hide-Show%20(Buttons)-2.1.user.js
 // ==/UserScript==
 
 (() => {
