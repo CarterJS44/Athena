@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         [Grid] Single Selector (button)
 // @namespace    https://etstack.io/
-// @version      0.3.2
+// @version      0.4
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
 // @grant        none
