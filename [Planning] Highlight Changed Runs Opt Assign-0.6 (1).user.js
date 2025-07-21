@@ -5,6 +5,7 @@
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
 // @grant        none
+// @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BPlanning%5D%20Highlight%20Changed%20Runs%20Opt%20Assign-0.6%20(1).user.js
 // ==/UserScript==
 
 (() => {
