@@ -7,6 +7,7 @@
 // @run-at       document-idle
 // @author       Carter Schuller
 // @grant        none
+// @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BRoutes%5D%20Highlight%20%2B%20Filter%20Runs%20Causing%20Negative%20Slack%20on%20a%20Route-0.5%20(1).user.js
 // ==/UserScript==
 
 ;(function (root) {           // expose helpers on window.minSlack
