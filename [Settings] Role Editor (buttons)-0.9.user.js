@@ -9,6 +9,7 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
+//no need to autoupdate slack carter if there is a need/ problems 
 (() => {
   'use strict';
 
