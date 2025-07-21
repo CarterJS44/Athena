@@ -24,7 +24,7 @@
   const BTN_ID      = 'tm-load-btn';
   
 
-  let active = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'true');
+  let active = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'false');
 
   /* one-time CSS */
   if (!document.getElementById('tm-over-style')) {
