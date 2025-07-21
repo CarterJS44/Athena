@@ -5,6 +5,7 @@
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
 // @grant        none
+// @updateURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BGrid%5D%20Single%20Selector%20(button)-0.3.1.user.js
 // ==/UserScript==
 
 (() => {
