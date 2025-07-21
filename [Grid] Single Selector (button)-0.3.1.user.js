@@ -9,9 +9,6 @@
 // ==/UserScript==
 
 
-//--------------------------------------------------------------  UPDATE TEST ------------------------------------------------------
-// why the hell wont this one work even after i commit changes RAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-
 (() => {
   'use strict';
 
