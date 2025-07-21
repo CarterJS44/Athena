@@ -6,7 +6,6 @@
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
 // @grant        none
-// @downloadURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BBell%20Time%5D%20Fullscreen%20Bell-Time%20Panel%20(Persistent)-1.6.user.js
 // @updateURL   https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BBell%20Time%5D%20Fullscreen%20Bell-Time%20Panel%20(Persistent)-1.6.user.js
 // ==/UserScript==
 
