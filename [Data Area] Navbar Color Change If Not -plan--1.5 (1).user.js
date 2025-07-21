@@ -8,6 +8,7 @@
 // @grant        none
 // ==/UserScript==
 
+//this script does not auto update as i dont see any reason for it too, if you wish it too auto update/changes need to be made slack carter 
 (() => {
   'use strict';
 
