@@ -6,6 +6,7 @@
 // @match        *://*.etstack.io/*
 // @author       Carter Schuller
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BRuns%5D%20Highlight%20%2B%20Filer%20runs%20that%20exceed%20max%20load-0.4.1.user.js
 // ==/UserScript==
 
 (() => {
