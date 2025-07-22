@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         [Settings] Role Editor (buttons)
 // @namespace    https://tampermonkey.net/
-// @version      0.9
+// @version      1.0
 // @description  “Read Only” & “Check All” buttons with nicer styling
 // @match        *://*.etstack.io/*
 // @run-at       document-idle
