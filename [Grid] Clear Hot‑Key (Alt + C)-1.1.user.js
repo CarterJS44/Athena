@@ -7,7 +7,6 @@
 // @run-at       document-idle /* wait until the SPA has mounted */
 // @grant        none
 // @author       Carter Schuller
-// @downloadURL https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BGrid%5D%20Clear%20Hot%E2%80%91Key%20(Alt%20%2B%20C)-1.1.user.js
 // @updateURL   https://raw.githubusercontent.com/CarterJS44/Athena/main/%5BGrid%5D%20Clear%20Hot%E2%80%91Key%20(Alt%20%2B%20C)-1.1.user.js
 // ==/UserScript==
 
