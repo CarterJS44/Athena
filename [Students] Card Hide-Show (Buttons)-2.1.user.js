@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         [Students] Card Hide/Show (Buttons)
+// @name         [Students] Card Hide/Show (Buttons + CTRL + SHIFT + U)
 // @namespace    https://tampermonkey.net
 // @version      2.1
 // @description  Eye buttons on five cards + hot-key to restore all hidden cards
