@@ -15,16 +15,16 @@
   'use strict';
 
   /* CONFIG */
-  const DEBUG   = false;                     // flip to false for silent mode
+  const DEBUG   = false;                     // fuckass debug
   const BAD_TAG = '(no header)';            // marker shown in console
 
   const WIDGET_SELECTOR = '.widget.widget-body.widget-border';
 
-  /* helper: gated console output */
+  /* helper: gated console output swag */
   const log = (...a) => DEBUG && console.log('[BT]', ...a);
   const warn = (...a) => DEBUG && console.warn('[BT]', ...a);
 
-  /* helper: mark once */
+  /* helper: mark once hell yeah */
   const markBad = (w, why) => {
     if (w.dataset.badMarked) return;
     w.dataset.badMarked = '1';
@@ -36,8 +36,8 @@
     /* already done? */
     if (!widget || widget.dataset.fullscreenApplied) return;
 
-    /* ── IDENTIFY A VALID WIDGET ─────────────────────────────
-       Accept either…
+    /* IDENTIFY A VALID WIDGET: 
+       Accept either
          1. a normal header, OR
          2. a Bell-Time AG-Grid (identified by the special columns)
     */
